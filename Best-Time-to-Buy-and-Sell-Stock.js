@@ -9,9 +9,6 @@
  * @return {number}
  */
 
- const prices = [7,1,5,3,6,4]
+const prices = [7, 1, 5, 3, 6, 4];
 
-
-var maxProfit = function(prices) {
-    
-};
+var maxProfit = function (prices) {};
