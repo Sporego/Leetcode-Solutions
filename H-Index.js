@@ -3,7 +3,6 @@
 function hirschNumber(numberArray)
 {
     let hirschIndex = 0;
-    let continueCheck = true;
     for (let i=0; i < numberArray.length; i++)
     {
         let count = 0;
@@ -25,5 +24,3 @@ function hirschNumber(numberArray)
     };
     return hirschIndex;
 };
-
-console.log(hirschNumber([3,0,6,1,5]));
