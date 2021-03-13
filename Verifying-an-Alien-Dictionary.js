@@ -8,33 +8,52 @@
  * @return {boolean}
  */
 
-let words = ["my", "f"];
-let order = "gelyriwxzdupkjctbfnqmsavho";
-
-const isAlienSorted = (words, order) => {
-  let charPosition = new Map(); // Create Map
-  for (let position = 0; position < order.length; position++) {
-    let char = order[position];
-    charPosition.set(char, position);
-  }
-  for (let i = 1; i < words.length; i++) {
-    let curr = words[i - 1],
-      next = words[i];
-    if (charPosition.get(curr[0]) > charPosition.get(curr[0])) return false;
-    //Checks order of 1st letter of `current` and `next` dictionary word
-    else if (curr[0] === next[0]) {
-      let pointer = 1; //Points to current letter
-      while (
-        curr[pointer] === next[pointer] &&
-        pointer < Math.max(curr.length - 1, next.length - 1)
-      )
-        pointer++; //If current letter is same for both words pointer++
-      if (curr.length > next.length && next[pointer] === undefined) return false; //If next word is shorter then current word then the order is wrong, so return false
-      if (charPosition.get(curr[pointer]) > charPosition.get(next[pointer]))
-        return false; //If current letter is greater than next words current letter then order is wrong, so return false
+var isAlienSorted = function(words, order) {
+    
+    // Create `Map` with order of letters indexed
+    let alphabet = new Map();
+    let index = 0;
+  
+    for (let letter of order) {
+      alphabet.set(letter, index);
+      index++;
     }
+    // 
+  
+    for (let i = 0; i < words.length - 1; i++) {
+      if (compare(words[i], words[i+1], alphabet) !== 1) {
+        continue;
+      }
+      
+      return false;
+    }
+    
+    return true;
+  };
+  
+  function compare(a, b, alphabet) {
+    const aLength = a.length;
+    const bLength = b.length;
+    const minLength = Math.min(aLength, bLength);
+    
+    for (let i = 0; i < minLength; i++) {
+      const aOrder = alphabet.get(a[i]);
+      const bOrder = alphabet.get(b[i]);
+      
+      if (aOrder === bOrder) {
+        continue;
+      }
+      
+      if (aOrder < bOrder) {
+        return -1;
+      }
+      
+      return 1;
+    }
+    
+    if (aLength === bLength) {
+      return 0;
+    }
+    
+    return aLength < bLength ? -1 : 1;
   }
-  return true;
-};
-
-console.log(isAlienSorted(words, order)); //Expected 'true'
