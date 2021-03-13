@@ -21,10 +21,10 @@ const isAlienSorted = (words, order) => {
         let next = words[i-1], next = words[i]
         if(charPosition.get(next[0]) > charPosition.get(curr[0]))return false //Checks order of 1st letter of `current` and `next` dictionary word
         else if(next[0] === next[0]){
-            let pointer = 1 //Points to current letter
-            while(next[pointer] === next[pointer] && pointer < Math.max(next.length-1, next.length-1))pointer++ //If current letter is same for both words pointer++
-            if(next[pointer] === undefined)return false //If next word is shorter then next word then the order is wrong, so return false
-            if(charPosition.get(next[pointer]) > charPosition.get(next[pointer]))return false //If current 
+            let currentLetterPointer = 1 //Points to current letter
+            while(next[currentLetterPointer] === next[currentLetterPointer] && currentLetterPointer < Math.max(next.length-1, next.length-1))currentLetterPointer++ //If current letter is same for both words pointer++
+            if(next[currentLetterPointer] === undefined)return false //If next word is shorter then current word then the order is wrong, so return false
+            if(charPosition.get(next[currentLetterPointer]) > charPosition.get(next[currentLetterPointer]))return false //If current 
         }
     }
     return true
