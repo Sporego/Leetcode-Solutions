@@ -11,6 +11,4 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-var reverseList = function(head) {
-    
-};
+var reverseList = function (head) {};
