@@ -29,7 +29,7 @@ const isAlienSorted = (words, order) => {
         pointer < Math.max(curr.length - 1, next.length - 1)
       )
         pointer++; //If current letter is same for both words pointer++
-      if (next[pointer] === undefined) return false; //If next word is shorter then next word then the order is wrong, so return false
+      if (curr.length > next.length && next[pointer] === undefined) return false; //If next word is shorter then current word then the order is wrong, so return false
       if (charPosition.get(curr[pointer]) > charPosition.get(next[pointer]))
         return false; //If current letter is greater than next words current letter then order is wrong, so return false
     }
