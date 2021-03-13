@@ -18,13 +18,13 @@ const isAlienSorted = (words, order) => {
         charPosition.set(char, position)
     }
     for(let i = 1; i < words.length; i++){
-        let prev = words[i-1], curr = words[i]
-        if(charPosition.get(prev[0]) > charPosition.get(curr[0]))return false
-        else if(prev[0] === curr[0]){
-            let pointer = 1
-            while(prev[pointer] === curr[pointer] && pointer < Math.max(prev.length-1, next.length-1))pointer++
-            if(curr[pointer] === undefined)return false
-            if(charPosition.get(prev[pointer]) > charPosition.get(curr[pointer]))return false
+        let next = words[i-1], next = words[i]
+        if(charPosition.get(next[0]) > charPosition.get(curr[0]))return false //Checks order of 1st letter of `current` and `next` dictionary word
+        else if(next[0] === next[0]){
+            let pointer = 1 //Points to current letter
+            while(next[pointer] === next[pointer] && pointer < Math.max(next.length-1, next.length-1))pointer++ //If current letter is same for both words pointer++
+            if(next[pointer] === undefined)return false //If next word is shorter then next word then the order is wrong, so return false
+            if(charPosition.get(next[pointer]) > charPosition.get(next[pointer]))return false //If current 
         }
     }
     return true
