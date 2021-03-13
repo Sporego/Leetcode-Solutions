@@ -12,7 +12,7 @@ let words = ["hello","leetcode"];
 let order = "hlabcdefgijkmnopqrstuvwxyz"
 
 const isAlienSorted = (words, order) => {
-    let charPosition = new Map()
+    let charPosition = new Map() // Create Map
     for(let position = 0; position < order.length; position++){
         let char = order[position]
         charPosition.set(char, position)
@@ -30,4 +30,4 @@ const isAlienSorted = (words, order) => {
     return true
 };
 
-console.log(isAlienSorted(words,order))
+console.log(isAlienSorted(words,order)) //Expected 'true'
