@@ -8,26 +8,33 @@
  * @return {boolean}
  */
 
-let words = ["hello","leetcode"];
-let order = "hlabcdefgijkmnopqrstuvwxyz"
+let words = ["my", "f"];
+let order = "gelyriwxzdupkjctbfnqmsavho";
 
 const isAlienSorted = (words, order) => {
-    let charPosition = new Map() // Create Map
-    for(let position = 0; position < order.length; position++){
-        let char = order[position]
-        charPosition.set(char, position)
+  let charPosition = new Map(); // Create Map
+  for (let position = 0; position < order.length; position++) {
+    let char = order[position];
+    charPosition.set(char, position);
+  }
+  for (let i = 1; i < words.length; i++) {
+    let curr = words[i - 1],
+      next = words[i];
+    if (charPosition.get(curr[0]) > charPosition.get(curr[0])) return false;
+    //Checks order of 1st letter of `current` and `next` dictionary word
+    else if (curr[0] === next[0]) {
+      let pointer = 1; //Points to current letter
+      while (
+        curr[pointer] === next[pointer] &&
+        pointer < Math.max(curr.length - 1, next.length - 1)
+      )
+        pointer++; //If current letter is same for both words pointer++
+      if (next[pointer] === undefined) return false; //If next word is shorter then next word then the order is wrong, so return false
+      if (charPosition.get(curr[pointer]) > charPosition.get(next[pointer]))
+        return false; //If current letter is greater than next words current letter then order is wrong, so return false
     }
-    for(let i = 1; i < words.length; i++){
-        let curr = words[i-1], next = words[i]
-        if(charPosition.get(curr[0]) > charPosition.get(curr[0]))return false //Checks order of 1st letter of `current` and `next` dictionary word
-        else if(curr[0] === next[0]){
-            let pointer = 1 //Points to current letter
-            while(curr[pointer] === next[pointer] && pointer < Math.max(curr.length-1, next.length-1))pointer++ //If current letter is same for both words pointer++
-            if(next[pointer] === undefined)return false //If next word is shorter then next word then the order is wrong, so return false
-            if(charPosition.get(curr[pointer]) > charPosition.get(next[pointer]))return false //If current letter is greater than next words current letter then order is wrong, so return false
-        }
-    }
-    return true
+  }
+  return true;
 };
 
-console.log(isAlienSorted(words,order)) //Expected 'true'
+console.log(isAlienSorted(words, order)); //Expected 'true'

@@ -10,19 +10,19 @@
  * @return {number[]}
  */
 
-const nums = [3,2,4];
+const nums = [3, 2, 4];
 const target = 6;
 
-function twoSum (nums, target) {
-    for (let i = 0 ; i < nums.length; i++) {
-        let firstNumber = nums[i]
-        for (let x = 1 + i ; x<nums.length; x++) {
-            let secondNumber = nums[x]
-            if ( (firstNumber + secondNumber) == target) {
-                return [i,x]
-            }
-        }
+function twoSum(nums, target) {
+  for (let i = 0; i < nums.length; i++) {
+    let firstNumber = nums[i];
+    for (let x = 1 + i; x < nums.length; x++) {
+      let secondNumber = nums[x];
+      if (firstNumber + secondNumber == target) {
+        return [i, x];
+      }
     }
-};
+  }
+}
 
 console.log(twoSum(nums, target));

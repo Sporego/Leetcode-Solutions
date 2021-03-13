@@ -9,21 +9,20 @@
  * @return {number}
  */
 
-var maxProfit = function(prices) {
- let minimum = prices[0];
- let maxProfit = 0;
-    for(i=0; i < prices.length; i++) {
-        // Check minimum
-        if(minimum > prices[i]) {
-            minimum = prices[i]
-        }
-        // Calculate Potential Margin (difference)
-        let difference = prices[i] - minimum
-
-        if (difference > maxProfit ) {
-            maxProfit = difference
-        }
-
+var maxProfit = function (prices) {
+  let minimum = prices[0];
+  let maxProfit = 0;
+  for (i = 0; i < prices.length; i++) {
+    // Check minimum
+    if (minimum > prices[i]) {
+      minimum = prices[i];
     }
-    return maxProfit
+    // Calculate Potential Margin (difference)
+    let difference = prices[i] - minimum;
+
+    if (difference > maxProfit) {
+      maxProfit = difference;
+    }
+  }
+  return maxProfit;
 };
