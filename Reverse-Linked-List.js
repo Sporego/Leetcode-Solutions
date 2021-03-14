@@ -12,6 +12,12 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-var reverseList = function(head) {
-    
-};
+
+class ListNode {
+  constructor(value, next) {
+    this.value = val === undefined ? 0 : val;
+    this.next = next === undefined ? null : next;
+  }
+}
+
+var reverseList = function (head) {};
