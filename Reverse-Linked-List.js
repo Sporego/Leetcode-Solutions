@@ -15,7 +15,7 @@
 
 class ListNode {
   constructor(value, next) {
-    this.value = val === undefined ? 0 : val;
+    this.value = val === undefined ? 0 : value;
     this.next = next === undefined ? null : next;
   }
 }
