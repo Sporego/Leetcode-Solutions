@@ -2,50 +2,21 @@
  * @param {number[]} height
  * @return {number}
  */
-class Prop {
-  constructor() {
-    this.array = [1];
-    this.wasFill = true;
-  }
-}
 
 var trap = function (height) {
-  const twoDMap = {};
-  let maximum = 0;
-  for (let i = 0; i < height.length; i++) {
-    if (height[i] > maximum) {
-      maximum = height[i];
+let left = 0;
+let right = height.length - 1;
+let total = 0;
+let leftMax = 0;
+let rightMax = 0;
+while (left < right) {
+    if(height[left] < height[right]) {
+        (height[left] > leftMax) ? (leftMax = height[left]) : total += (leftMax-height[left]);
+        left++
     } else {
-      maximum = maximum;
+        (height[right] > rightMax) ? (rightMax = height[right]) : total += (rightMax- height[right])
+        right--
     }
-
-    for (let j = maximum; j > 0; j--) {
-      let isFill = j <= height[i];
-      if (twoDMap[j] === undefined) {
-        twoDMap[j] = new Prop();
-      } else {
-        if (twoDMap[j].wasFill === isFill) {
-          twoDMap[j].array.push(twoDMap[j].array.pop() + 1);
-        } else {
-          twoDMap[j].array.push(1);
-        }
-      }
-      twoDMap[j].wasFill = isFill;
-    }
-  }
-
-  let areaTotal = 0;
-  for (const prop in twoDMap) {
-    let calcArray = twoDMap[prop].array;
-    for (let i = 1; i < calcArray.length - 1; i += 2) {
-      if (calcArray.length < 3) {
-        continue;
-      }
-
-      areaTotal += calcArray[i];
-    }
-  }
-  return areaTotal;
+}
+return total
 };
-
-console.log(trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]));
