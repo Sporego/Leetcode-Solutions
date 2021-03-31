@@ -19,12 +19,3 @@ function merge(intervals) {
   }
   return intervals;
 }
-
-console.log(
-  merge([
-    [2, 3],
-    [4, 6],
-    [5, 7],
-    [3, 4],
-  ])
-);
