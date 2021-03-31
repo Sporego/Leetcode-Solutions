@@ -48,7 +48,7 @@ function numIslands(grid) {
           if (grid[yPrime][xPrime - 1] > -1) {
             if (grid[yPrime][xPrime - 1] === "1") {
               queue.push(new Cords(yPrime, xPrime - 1));
-              grid[yPrime][xPrime - 1] = "0"
+              grid[yPrime][xPrime - 1] = "0";
             }
           }
 
