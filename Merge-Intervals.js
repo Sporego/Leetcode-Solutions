@@ -9,7 +9,7 @@ function merge(intervals) {
   while (i < intervals.length) {
     let first = intervals[i];
     let second = intervals[i + 1];
-    let mergeArr = first; //Saves 2 MB of Memory o.o
+    let mergeArr = first; //Saves 2 MB of Memory o.o if equal to `first` instead of `[]`
     if (second && first[1] >= second[0]) {
       mergeArr[0] = first[0] <= second[0] ? first[0] : second[0];
       mergeArr[1] = first[1] <= second[1] ? second[1] : first[1];
