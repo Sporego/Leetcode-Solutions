@@ -7,6 +7,6 @@
     for (let i = 0; i < 2*n; i+=2){
     nums.splice(i + 1,0,nums[n+i])
     }
-    nums.splice(2*n,n)
+    nums.length = 2*n
     return nums
 };
