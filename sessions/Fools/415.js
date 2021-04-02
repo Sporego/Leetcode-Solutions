@@ -27,8 +27,6 @@ var addStrings = function (num1, num2) {
 			numDic[num2[num2Point]] +
 			numDic[carry]
 		).toString();
-		console.log(sum);
-		console.log(returned);
 		if (sum.length > 1) {
 			carry = sum[0];
 			returned = sum[1].concat(returned);
