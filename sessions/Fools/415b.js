@@ -14,7 +14,6 @@
         const digit1 = i < 0 ? 0 : num1.charAt(i) * 1;
         const digit2 = j < 0 ? 0 : num2.charAt(j) * 1;
         const digitsSum = digit1 + digit2 + carry;
-        console.log(digitsSum%10)
         sum = `${digitsSum % 10}${sum}`;
         carry = Math.floor(digitsSum / 10);
     }
