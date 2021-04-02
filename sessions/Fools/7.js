@@ -8,9 +8,9 @@ var reverse = function (x) {
 	let returned = 0;
 	while (num > 0) {
 		returned *= 10;
-		returned += Math.floor(num % 10);
+		returned += num % 10;
 		num = Math.floor(num / 10);
 	}
-	if (returned > Math.pow(2, 31)) return 0;
+	if (returned > 2 ** 31) return 0;
 	return isNegative ? -1 * returned : returned;
 };

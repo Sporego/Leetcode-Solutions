@@ -39,9 +39,9 @@ var addStrings = function (num1, num2) {
 		num2Point--;
 	}
 
-	if (carry !== 0 ) {
-        returned = carry.concat(returned)
-    }
+	if (carry !== 0) {
+		returned = carry.concat(returned);
+	}
 
 	return returned;
 };
