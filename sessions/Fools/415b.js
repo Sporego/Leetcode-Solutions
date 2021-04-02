@@ -21,5 +21,3 @@
     
     return sum;
 };
-
-console.log(addStrings("1","9"))
