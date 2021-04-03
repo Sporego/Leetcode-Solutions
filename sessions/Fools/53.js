@@ -15,4 +15,3 @@ var maxSubArray = function (nums) {
 	}
 	return maximum;
 };
-
