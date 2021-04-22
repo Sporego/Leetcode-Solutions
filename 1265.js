@@ -30,3 +30,10 @@ var printLinkedListInReverse = function (head) {
     array.pop().printValue();
   }
 };
+
+var printLinkedListInReverseRecursive = function (head) {
+  if (head.getNext()) {
+    printLinkedListInReverseRecursive(head.getNext());
+  }
+  return head.printValue();
+};
