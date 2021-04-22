@@ -6,8 +6,8 @@ function spiralOrder(matrix) {
   if (matrix.isArray === false) return; // Guard Statement
   //     Imagine Euclidean Plane Quadrant 1
   // "Spiral Order is counterclockwise spiraled version of matrix"
-  let xRange = [0, matrix[0].length-1]; // [min,max]
-  let yRange = [0, matrix.length-1]; // index 0 is min ; index 1 is max
+  let xRange = [0, matrix[0].length - 1]; // [min,max]
+  let yRange = [0, matrix.length - 1]; // index 0 is min ; index 1 is max
   const returned = [];
 
   while (xRange[0] <= xRange[1] && yRange[0] <= yRange[1]) {
