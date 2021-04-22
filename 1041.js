@@ -38,11 +38,13 @@ function isRobotBounded(instructions) {
       return false;
     }
   }
+  //Scenario 1
   iterate(instructions);
   let result = check();
   if (result) {
     return true;
   }
+  //Scenario 2
   iterate(instructions);
   iterate(instructions);
   iterate(instructions);
