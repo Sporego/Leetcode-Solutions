@@ -1,0 +1,78 @@
+import random
+import time
+
+def first_missing_positive_garbage(nums):
+    nums = nums[:]  # work on a copy
+    n = len(nums)
+    garbage_to_right = n - 1
+
+    for curr_index in range(n):
+        desired = curr_index + 1
+        while curr_index < n and nums[curr_index] != desired:
+            if garbage_to_right < curr_index:
+                return desired
+
+            val = nums[curr_index]
+            target_pos = val - 1
+
+            is_out_of_range = (val <= 0 or val > n)
+            is_duplicate   = (0 <= target_pos < n and nums[target_pos] == val)
+            is_past_garbage = (target_pos > garbage_to_right)
+
+            if is_out_of_range or is_duplicate or is_past_garbage:
+                nums[garbage_to_right], nums[curr_index] = (
+                    nums[curr_index],
+                    nums[garbage_to_right],
+                )
+                garbage_to_right -= 1
+            else:
+                nums[curr_index], nums[target_pos] = (
+                    nums[target_pos],
+                    nums[curr_index],
+                )
+    return n + 1
+
+def first_missing_positive_cycle(nums):
+    nums = nums[:]  # work on a copy
+    n = len(nums)
+
+    # phase 1: place each number in its “home” if possible
+    for i in range(n):
+        while (
+            1 <= nums[i] <= n
+            and nums[nums[i] - 1] != nums[i]
+        ):
+            target = nums[i] - 1
+            nums[i], nums[target] = nums[target], nums[i]
+
+    # phase 2: scan for the first slot i that doesn’t have i+1
+    for i in range(n):
+        if nums[i] != i + 1:
+            return i + 1
+
+    return n + 1
+
+def generate_random_array(n, lower, upper):
+    return [random.randint(lower, upper) for _ in range(n)]
+
+def benchmark(func, tests):
+    start = time.perf_counter()
+    for arr in tests:
+        func(arr)
+    return time.perf_counter() - start
+
+if __name__ == "__main__":
+    random.seed(0)
+
+    # test parameters: you can adjust sizes or ranges
+    sizes = [1_000, 5_000, 10_000]
+    ranges = [(-5, 5), (-n, n*2) for n in sizes]  # example: small vs larger value ranges
+
+    for n in sizes:
+        # generate a handful of test arrays of size n
+        tests = [generate_random_array(n, -n, n * 2) for _ in range(5)]
+
+        t1 = benchmark(first_missing_positive_garbage, tests)
+        t2 = benchmark(first_missing_positive_cycle, tests)
+
+        print(f"n = {n:6d} | garbage→right: {t1:.4f}s | cycle-sort: {t2:.4f}s")
